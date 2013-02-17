@@ -22,24 +22,32 @@ namespace rename
         private bool Replace_FieldsAreReady = false;
         private bool Replace_DirIsCorrect = false;
 
-
         void DoCheckPath()
         {
             GbReplace.Enabled = path != "";
+            GbAddToEnd.Enabled = path != "";
+
             //if (path == "")
             //    GbReplace.Enabled = false;
             //else
             //    GbReplace.Enabled = true;
         }
 
+        //part of REPLACE
+
+        void SetToolTips()
+        {
+            
+        }
+
         void RenameBtnToolTip()
         {
             string renameBtnToolTip = Replace_CB_ReplaceFile.Checked && Replace_CB_ReplaceFolder.Checked
-                                          ? "Rename Files and Folders"
+                                          ? "Replace the name of Files and Folders"
                                           : Replace_CB_ReplaceFile.Checked && Replace_CB_ReplaceFolder.Checked == false
-                                                ? "Rename Files"
+                                                ? "Replace the name of Files"
                                                 : Replace_CB_ReplaceFile.Checked == false && Replace_CB_ReplaceFolder.Checked
-                                                      ? "Rename Folders"
+                                                      ? "Replace the name of Folders"
                                                       : "";
             //if (Replace_CB_ReplaceFile.Enabled && Replace_CB_ReplaceFile.Enabled)
             //    renameBtnToolTip = "Rename Files and Folders";
@@ -85,6 +93,7 @@ namespace rename
         private void Rename_Load(object sender, EventArgs e)
         {
             DoCheckPath();
+            SetToolTips();
             //TT_main.SetToolTip(GB_Replace, "replace name");
         }
 
@@ -138,6 +147,55 @@ namespace rename
                 Rename_SS_Status.Text = "there is few problem!";
                 return;
             }
+
+            int numEntries = 0;
+            string fullFileNames = "";
+            foreach (var entry in GetDir())
+            {
+                string newName = entry.Name.Replace(Replace_TB_From.Text, Replace_TB_To.Text);
+                int newnameLength = entry.FullName.Length - entry.Name.Length;
+                string newFullName = entry.FullName.Remove(newnameLength) + newName;
+
+                if (Directory.Exists(entry.FullName) && Replace_CB_ReplaceFolder.Checked &&
+                    entry.FullName != newFullName)
+                {
+                    numEntries++;
+                    fullFileNames += '-' + entry.FullName.Replace(path, "") + '\n';
+                }
+                else if (!Directory.Exists(entry.FullName) && Replace_CB_ReplaceFile.Checked &&
+                         entry.FullName != newFullName)
+                {
+                    numEntries++;
+                    fullFileNames += '-' + entry.FullName.Replace(path, "") + '\n';
+                }
+            }
+            string askText = "'" + numEntries +
+                             (Replace_CB_ReplaceFile.Checked && Replace_CB_ReplaceFolder.Checked
+                                  ? "' files and folders "
+                                  : Replace_CB_ReplaceFile.Checked && !Replace_CB_ReplaceFolder.Checked
+                                        ? "' files "
+                                        : "' folders ")
+                             + "are selected. are you sure you want to rename them?\n"
+                             + "From '" + Replace_TB_From.Text + "' To '" + Replace_TB_To.Text + "'.\n"
+                             + fullFileNames;
+
+            if (numEntries == 0)
+            {
+                MessageBox.Show("there is no " + (Replace_CB_ReplaceFile.Checked && Replace_CB_ReplaceFolder.Checked
+                                                      ? "file or folder"
+                                                      : Replace_CB_ReplaceFile.Checked &&
+                                                        !Replace_CB_ReplaceFolder.Checked
+                                                            ? "file"
+                                                            : "folder")
+                                + " with special keyword '" + Replace_TB_From.Text + "' to rename",
+                                "Renamer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DialogResult AskToRename = MessageBox.Show(askText, "Renamer", MessageBoxButtons.YesNo,
+                                                       MessageBoxIcon.Information);
+            if (AskToRename != DialogResult.Yes) return;
+
+
             foreach (var entry in GetDir())
             {
                 string newName = entry.Name.Replace(Replace_TB_From.Text, Replace_TB_To.Text);
@@ -166,6 +224,7 @@ namespace rename
             Replace_RB_CurrentDir.Checked = true;
             Rename_SS_Status.Text = "fields in replace part changed to default";
         }
+
 
 
 

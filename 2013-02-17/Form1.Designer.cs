@@ -31,13 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.TT_main = new System.Windows.Forms.ToolTip(this.components);
             this.Replace_Btn_Clear = new System.Windows.Forms.Button();
+            this.Add_Btn_Clear = new System.Windows.Forms.Button();
+            this.Replace_RB_CurrentDir = new System.Windows.Forms.RadioButton();
             this.GbPath = new System.Windows.Forms.GroupBox();
             this.Path_TB_Path = new System.Windows.Forms.TextBox();
             this.Path_Llbl_Path = new System.Windows.Forms.LinkLabel();
             this.GbReplace = new System.Windows.Forms.GroupBox();
             this.Replace_Btn_Rename = new System.Windows.Forms.Button();
             this.Replace_RB_AllDir = new System.Windows.Forms.RadioButton();
-            this.Replace_RB_CurrentDir = new System.Windows.Forms.RadioButton();
             this.Replace_CB_ReplaceFolder = new System.Windows.Forms.CheckBox();
             this.Replace_CB_ReplaceFile = new System.Windows.Forms.CheckBox();
             this.Replace_Lbl_To = new System.Windows.Forms.Label();
@@ -47,9 +48,19 @@
             this.Fbd_Path = new System.Windows.Forms.FolderBrowserDialog();
             this.SS_main = new System.Windows.Forms.StatusStrip();
             this.Rename_SS_Status = new System.Windows.Forms.ToolStripStatusLabel();
+            this.GbAddToEnd = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.Add_Btn_Add = new System.Windows.Forms.Button();
+            this.Add_Rb_AllDir = new System.Windows.Forms.RadioButton();
+            this.Add_Tb_Text = new System.Windows.Forms.TextBox();
+            this.Add_Rb_CurrentDir = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Add_Cb_AddToFolder = new System.Windows.Forms.CheckBox();
+            this.Add_Cb_AddToFile = new System.Windows.Forms.CheckBox();
             this.GbPath.SuspendLayout();
             this.GbReplace.SuspendLayout();
             this.SS_main.SuspendLayout();
+            this.GbAddToEnd.SuspendLayout();
             this.SuspendLayout();
             // 
             // Replace_Btn_Clear
@@ -62,6 +73,29 @@
             this.TT_main.SetToolTip(this.Replace_Btn_Clear, "Back fields to default");
             this.Replace_Btn_Clear.UseVisualStyleBackColor = true;
             this.Replace_Btn_Clear.Click += new System.EventHandler(this.Replace_Btn_Clear_Click);
+            // 
+            // Add_Btn_Clear
+            // 
+            this.Add_Btn_Clear.Location = new System.Drawing.Point(201, 112);
+            this.Add_Btn_Clear.Name = "Add_Btn_Clear";
+            this.Add_Btn_Clear.Size = new System.Drawing.Size(80, 25);
+            this.Add_Btn_Clear.TabIndex = 10;
+            this.Add_Btn_Clear.Text = "Clear";
+            this.TT_main.SetToolTip(this.Add_Btn_Clear, "Back fields to default");
+            this.Add_Btn_Clear.UseVisualStyleBackColor = true;
+            // 
+            // Replace_RB_CurrentDir
+            // 
+            this.Replace_RB_CurrentDir.AutoSize = true;
+            this.Replace_RB_CurrentDir.Checked = true;
+            this.Replace_RB_CurrentDir.Location = new System.Drawing.Point(110, 74);
+            this.Replace_RB_CurrentDir.Name = "Replace_RB_CurrentDir";
+            this.Replace_RB_CurrentDir.Size = new System.Drawing.Size(102, 17);
+            this.Replace_RB_CurrentDir.TabIndex = 6;
+            this.Replace_RB_CurrentDir.TabStop = true;
+            this.Replace_RB_CurrentDir.Text = "Current directory";
+            this.TT_main.SetToolTip(this.Replace_RB_CurrentDir, "Replace the names of files that are\r\nexist only in this folder.");
+            this.Replace_RB_CurrentDir.UseVisualStyleBackColor = true;
             // 
             // GbPath
             // 
@@ -137,19 +171,8 @@
             this.Replace_RB_AllDir.Size = new System.Drawing.Size(87, 17);
             this.Replace_RB_AllDir.TabIndex = 6;
             this.Replace_RB_AllDir.Text = "All directories";
+            this.TT_main.SetToolTip(this.Replace_RB_AllDir, "Replace the names of files that are\r\nexist in this and all of sub folders");
             this.Replace_RB_AllDir.UseVisualStyleBackColor = true;
-            // 
-            // Replace_RB_CurrentDir
-            // 
-            this.Replace_RB_CurrentDir.AutoSize = true;
-            this.Replace_RB_CurrentDir.Checked = true;
-            this.Replace_RB_CurrentDir.Location = new System.Drawing.Point(110, 74);
-            this.Replace_RB_CurrentDir.Name = "Replace_RB_CurrentDir";
-            this.Replace_RB_CurrentDir.Size = new System.Drawing.Size(102, 17);
-            this.Replace_RB_CurrentDir.TabIndex = 6;
-            this.Replace_RB_CurrentDir.TabStop = true;
-            this.Replace_RB_CurrentDir.Text = "Current directory";
-            this.Replace_RB_CurrentDir.UseVisualStyleBackColor = true;
             // 
             // Replace_CB_ReplaceFolder
             // 
@@ -227,11 +250,109 @@
             this.Rename_SS_Status.Size = new System.Drawing.Size(39, 17);
             this.Rename_SS_Status.Text = "Ready";
             // 
+            // GbAddToEnd
+            // 
+            this.GbAddToEnd.Controls.Add(this.checkBox1);
+            this.GbAddToEnd.Controls.Add(this.Add_Btn_Clear);
+            this.GbAddToEnd.Controls.Add(this.Add_Btn_Add);
+            this.GbAddToEnd.Controls.Add(this.Add_Rb_AllDir);
+            this.GbAddToEnd.Controls.Add(this.Add_Tb_Text);
+            this.GbAddToEnd.Controls.Add(this.Add_Rb_CurrentDir);
+            this.GbAddToEnd.Controls.Add(this.label1);
+            this.GbAddToEnd.Controls.Add(this.Add_Cb_AddToFolder);
+            this.GbAddToEnd.Controls.Add(this.Add_Cb_AddToFile);
+            this.GbAddToEnd.Location = new System.Drawing.Point(3, 199);
+            this.GbAddToEnd.Name = "GbAddToEnd";
+            this.GbAddToEnd.Size = new System.Drawing.Size(376, 143);
+            this.GbAddToEnd.TabIndex = 3;
+            this.GbAddToEnd.TabStop = false;
+            this.GbAddToEnd.Text = "Add to the end";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(274, 21);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(69, 17);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.Text = "Subtract ";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // Add_Btn_Add
+            // 
+            this.Add_Btn_Add.Location = new System.Drawing.Point(287, 112);
+            this.Add_Btn_Add.Name = "Add_Btn_Add";
+            this.Add_Btn_Add.Size = new System.Drawing.Size(80, 25);
+            this.Add_Btn_Add.TabIndex = 9;
+            this.Add_Btn_Add.Text = "Add";
+            this.Add_Btn_Add.UseVisualStyleBackColor = true;
+            // 
+            // Add_Rb_AllDir
+            // 
+            this.Add_Rb_AllDir.AutoSize = true;
+            this.Add_Rb_AllDir.Location = new System.Drawing.Point(233, 74);
+            this.Add_Rb_AllDir.Name = "Add_Rb_AllDir";
+            this.Add_Rb_AllDir.Size = new System.Drawing.Size(87, 17);
+            this.Add_Rb_AllDir.TabIndex = 11;
+            this.Add_Rb_AllDir.Text = "All directories";
+            this.Add_Rb_AllDir.UseVisualStyleBackColor = true;
+            // 
+            // Add_Tb_Text
+            // 
+            this.Add_Tb_Text.Location = new System.Drawing.Point(110, 19);
+            this.Add_Tb_Text.Name = "Add_Tb_Text";
+            this.Add_Tb_Text.Size = new System.Drawing.Size(141, 20);
+            this.Add_Tb_Text.TabIndex = 9;
+            // 
+            // Add_Rb_CurrentDir
+            // 
+            this.Add_Rb_CurrentDir.AutoSize = true;
+            this.Add_Rb_CurrentDir.Checked = true;
+            this.Add_Rb_CurrentDir.Location = new System.Drawing.Point(110, 74);
+            this.Add_Rb_CurrentDir.Name = "Add_Rb_CurrentDir";
+            this.Add_Rb_CurrentDir.Size = new System.Drawing.Size(102, 17);
+            this.Add_Rb_CurrentDir.TabIndex = 12;
+            this.Add_Rb_CurrentDir.TabStop = true;
+            this.Add_Rb_CurrentDir.Text = "Current directory";
+            this.Add_Rb_CurrentDir.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Text to add : ";
+            // 
+            // Add_Cb_AddToFolder
+            // 
+            this.Add_Cb_AddToFolder.AutoSize = true;
+            this.Add_Cb_AddToFolder.Location = new System.Drawing.Point(233, 51);
+            this.Add_Cb_AddToFolder.Name = "Add_Cb_AddToFolder";
+            this.Add_Cb_AddToFolder.Size = new System.Drawing.Size(120, 17);
+            this.Add_Cb_AddToFolder.TabIndex = 10;
+            this.Add_Cb_AddToFolder.Text = "Add to folder names";
+            this.Add_Cb_AddToFolder.UseVisualStyleBackColor = true;
+            // 
+            // Add_Cb_AddToFile
+            // 
+            this.Add_Cb_AddToFile.AutoSize = true;
+            this.Add_Cb_AddToFile.Checked = true;
+            this.Add_Cb_AddToFile.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Add_Cb_AddToFile.Location = new System.Drawing.Point(110, 51);
+            this.Add_Cb_AddToFile.Name = "Add_Cb_AddToFile";
+            this.Add_Cb_AddToFile.Size = new System.Drawing.Size(107, 17);
+            this.Add_Cb_AddToFile.TabIndex = 9;
+            this.Add_Cb_AddToFile.Text = "Add to file names";
+            this.Add_Cb_AddToFile.UseVisualStyleBackColor = true;
+            // 
             // Rename
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 622);
+            this.Controls.Add(this.GbAddToEnd);
             this.Controls.Add(this.SS_main);
             this.Controls.Add(this.GbReplace);
             this.Controls.Add(this.GbPath);
@@ -247,6 +368,8 @@
             this.GbReplace.PerformLayout();
             this.SS_main.ResumeLayout(false);
             this.SS_main.PerformLayout();
+            this.GbAddToEnd.ResumeLayout(false);
+            this.GbAddToEnd.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,6 +395,16 @@
         private System.Windows.Forms.Button Replace_Btn_Clear;
         private System.Windows.Forms.StatusStrip SS_main;
         private System.Windows.Forms.ToolStripStatusLabel Rename_SS_Status;
+        private System.Windows.Forms.GroupBox GbAddToEnd;
+        private System.Windows.Forms.Button Add_Btn_Clear;
+        private System.Windows.Forms.Button Add_Btn_Add;
+        private System.Windows.Forms.RadioButton Add_Rb_AllDir;
+        private System.Windows.Forms.TextBox Add_Tb_Text;
+        private System.Windows.Forms.RadioButton Add_Rb_CurrentDir;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox Add_Cb_AddToFolder;
+        private System.Windows.Forms.CheckBox Add_Cb_AddToFile;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
