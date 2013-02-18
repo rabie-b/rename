@@ -16,3 +16,4 @@ D:\Programming\workplace\_Projects\rename\obj\Debug\rename.Properties.Resources.
 D:\Programming\workplace\_Projects\rename\obj\Debug\rename.csproj.GenerateResource.Cache
 D:\Programming\workplace\_Projects\rename\bin\Debug\rename.exe
 D:\Programming\workplace\_Projects\rename\bin\Debug\rename.pdb
+D:\Programming\workplace\_Projects\rename\obj\Debug\rename.AskToReplace.resources
