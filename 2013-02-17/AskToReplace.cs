@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using rename.Properties;
 
 namespace rename
 {
@@ -20,8 +21,10 @@ namespace rename
 
         public string AskTexts
         {
-            get { return label1.Text; }
-            set { label1.Text = value; }
+            //get { return label1.Text; }
+            //set { label1.Text = value; }
+            get { return textBox1.Text; }
+            set { textBox1.Text = value; }
         }
 
         public bool AskResultS { get { return AskResult; } }
@@ -29,7 +32,7 @@ namespace rename
 
         private void AskToReplace_Load(object sender, EventArgs e)
         {
-            Image image = Image.FromFile(Directory.GetCurrentDirectory() + "\\info.png");
+            Image image = Resources.info;
             pictureBox1.Image = image;
             pictureBox1.Height = image.Height;
             pictureBox1.Width = image.Width;

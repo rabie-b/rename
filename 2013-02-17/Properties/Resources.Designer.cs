@@ -68,5 +68,42 @@ namespace rename.Properties {
                 return ResourceManager.GetString("FieldsCleared", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap info {
+            get {
+                object obj = ResourceManager.GetObject("info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace the name of Files and Folders.
+        /// </summary>
+        internal static string ReplaceFileAndFolder {
+            get {
+                return ResourceManager.GetString("ReplaceFileAndFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace the name of Files.
+        /// </summary>
+        internal static string ReplaceJustFile {
+            get {
+                return ResourceManager.GetString("ReplaceJustFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace the name of Folders.
+        /// </summary>
+        internal static string ReplaceJustFolder {
+            get {
+                return ResourceManager.GetString("ReplaceJustFolder", resourceCulture);
+            }
+        }
     }
 }

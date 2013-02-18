@@ -289,6 +289,7 @@
             this.Add_Btn_Add.TabIndex = 9;
             this.Add_Btn_Add.Text = "Add";
             this.Add_Btn_Add.UseVisualStyleBackColor = true;
+            this.Add_Btn_Add.Click += new System.EventHandler(this.Add_Btn_Add_Click);
             // 
             // Add_Rb_AllDir
             // 
